@@ -23,3 +23,13 @@ import Foundation
 
 
 
+extension Validating: Equatable, Hashable where Value: Hashable {
+    public static func == (lhs: Validating<Value>, rhs: Validating<Value>) -> Bool {
+        lhs.wrappedValue == rhs.wrappedValue
+    }
+    
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(wrappedValue)
+    }
+}
